@@ -3,9 +3,9 @@
 <table class="table table-dark" style="border-radius:10px">
     <thead>
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Cognoms</th>
-            <th scope="col">Nom</th>
+            <th scope="col"><a class="btn btn-gold" href="index.php?order=id" role="button">ID</a></th>
+            <th scope="col"><a class="btn btn-gold" href="index.php?order=nom" role="button">Nom</a></th>
+            <th scope="col"><a class="btn btn-gold" href="index.php?order=cognoms" role="button">Cognoms</a></th>
         </tr>
     </thead>
     <tbody>

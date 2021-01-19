@@ -13,20 +13,27 @@ function getPage(){
     $numberOfRows = mysql_ask("SELECT COUNT(*) as total FROM contactes")-> fetch_assoc()['total'];
     $numberOfPages = round($numberOfRows / Page_Size);
     define("Number_Of_Pages",$numberOfPages);
+
     if(isset($_REQUEST['page'])){
         $page = $_REQUEST['page']; 
-        if($page > $numberOfPages-1){header("Location: index.php?page=".($numberOfPages-1));}
-        if($page < 0){header("Location: index.php");} 
+        if($page >= $numberOfPages){
+            header("Location: index.php");
+        }
+        if($page < 0){
+            header("Location: index.php");
+        } 
     }else{
         $page = 0;
     }
    
     $offset = $page * 5;
     
+    $orderBy = isset($_REQUEST['order']) ? $_REQUEST['order'] : 'id';
     $query = mysql_ask("SELECT id,nom,cognoms 
                         FROM contactes
+                        ORDER BY " . $orderBy . "
                         LIMIT " . Page_Size . "
-                        OFFSET $offset");
+                        OFFSET $offset ");
     
     while($row = $query -> fetch_assoc()){
 
