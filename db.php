@@ -1,13 +1,6 @@
 <?php
 define("Page_Size",5);
 
-function pageNumber(){
-    if(isset($_REQUEST['page'])){ 
-        ($_REQUEST['page']) - 1;
-    }
-
-}
-
 function getPage(){
 
     $numberOfRows = mysql_ask("SELECT COUNT(*) as total FROM contactes")-> fetch_assoc()['total'];
@@ -41,6 +34,9 @@ function getPage(){
                     <th scope='row'>".$row['id']."</th>
                     <td>".$row['nom']."</td>
                     <td>".$row['cognoms']."</td>
+                    <td><a href='form.php'><span class='glyphicon glyphicon-search color-white'></span></a></td>
+                    <td><a href='form.php'><span class='glyphicon glyphicon-pencil color-white'></span></a></td>
+                    <td><a href='form.php'><span class='glyphicon glyphicon-trash color-white'></span></a></td>
                 </tr>";
     }
    
